@@ -1,27 +1,30 @@
+"use strict";
 
 let preview = document.getElementById("preview");
+let fileName = '';
 let previewImg = document.createElement("img");
 
-// post Image
-
-"use strict";
+// Function to handle drag and drop of images
 function dragNdrop(event) {
-    let fileName = URL.createObjectURL(event.target.files[0]);
-
-    previewImg.setAttribute("src", fileName);
-    document.querySelector('.post_img').setAttribute("src", fileName);
-    preview.innerHTML = "";
-    preview.appendChild(previewImg);
-
+    let files = event.target.files;
+    if (files.length > 0) {
+        fileName = URL.createObjectURL(files[0]);
+        previewImg.setAttribute("src", fileName);
+        document.querySelector('.post_img').setAttribute("src", fileName);
+        preview.innerHTML = "";
+        preview.appendChild(previewImg);
+    }
 }
+
 function drag() {
     document.getElementById('uploadFile').parentNode.className = 'draging dragBox';
 }
+
 function drop() {
     document.getElementById('uploadFile').parentNode.className = 'dragBox';
 }
 
-//To know which type of post
+// Event listeners to determine which type of post
 document.querySelectorAll('.add_post_link a').forEach(function (anchor) {
     anchor.addEventListener('click', function (event) {
         event.preventDefault();
@@ -35,7 +38,6 @@ document.querySelectorAll('.add_post_link a').forEach(function (anchor) {
         } else if (clickedAnchorId === 'post-video') {
             document.getElementById('webCam').style.display = 'block';
             let video = document.getElementById("vid");
-
             let mediaDevices = navigator.mediaDevices;
             vid.muted = true;
             mediaDevices
@@ -44,33 +46,24 @@ document.querySelectorAll('.add_post_link a').forEach(function (anchor) {
                     audio: true,
                 })
                 .then((stream) => {
-                    // Changing the source of video to current stream.
                     video.srcObject = stream;
                     video.addEventListener("loadedmetadata", () => {
                         video.play();
                     });
                 })
                 .catch(alert);
-
         }
-
     });
 });
 
-
-
-
-
-//  post  click
+// Event listener for post button click
 document.getElementById('button_value').onclick = () => {
     let inputValue = document.getElementById('input_value').value;
-    let preview = document.getElementById("preview");
     preview.style.display = 'none';
     document.querySelector('.uploadOuter').style.display = 'none';
     let add_post_container = document.createElement('div');
     add_post_container.classList.add('add_post_container');
     add_post_container.style.display = 'block';
-    // <img class="post_img" src="" alt="postImage"  >
 
     add_post_container.innerHTML = `
         <div class="post_row">
@@ -86,10 +79,13 @@ document.getElementById('button_value').onclick = () => {
         <p>${inputValue}</p>
         <div class="uploadOuter">
             <span class="dragBox">
-                Darg and Drop image here
+                Drag and Drop image here
                 <input type="file" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()"
                     id="uploadFile" />
             </span>
+        </div>
+        <div class="post_image_container">
+            <img class="post_img" src="${fileName}" alt="postImage">
         </div>
         <div class="post_row">
             <div class="activity_icon">
@@ -105,10 +101,6 @@ document.getElementById('button_value').onclick = () => {
     `;
 
     document.body.querySelector('.main_content').appendChild(add_post_container);
-    // document.body.appendChild(add_post_container);
-    //     preview.style.display = 'none';
-    // document.querySelector('.uploadOuter').style.display = 'none';
-    // document.querySelector('.post_img').setAttribute("src", fileName);
 };
 
 
