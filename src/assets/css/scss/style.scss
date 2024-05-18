@@ -1,0 +1,539 @@
+@import './mixins/mixins';
+@import './modules/normalize';
+@import './variables/var';
+@import './responsive/responsive.scss';
+
+.emoji-selector {
+	background-color: $background-color_2;
+	border-radius: 1rem;
+	cursor: default;
+	display: none;
+	@include padding(0, 0, 0,0 );
+	border: 1px solid #eee;
+	@include positioned(absolute,75% ,0 ,0 ,50% );
+	@include width-height(325px,350px);
+	z-index: 5;
+	overflow: auto;
+	transition: padding-left 0.3s, background-color 0.5s; 
+}
+.emoji-selector ul.emoji-list {
+	background-color: $background-color_2;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	@include padding(0, 1rem, 1rem,1rem);
+	border-radius: 0;
+	z-index: 5;
+}
+.emoji-selector ul.emoji-list li {
+	@include width-height(35px,35px);
+	border-radius: 0.25rem;
+	font-size: 1.5rem;
+}
+.emoji-selector.active {
+	bottom: 110%;
+	opacity: 1;
+	pointer-events: all;
+}
+
+#webCam{
+	display: none;
+	@include width-height(250px,100px);
+}
+
+.uploadOuter {
+	text-align: center;
+    @include padding(20px,20px ,20px ,20px );
+	display: none;
+	strong {
+	    padding: 0 10px;
+	}
+}
+
+.dragBox {
+	@include width-height(250px,100px);
+	@include margin(0,auto , 0,auto );
+	@include positioned(relative,0 ,0 ,0 ,0 );
+	text-align: center;
+	font-weight: bold;
+	line-height: 95px;
+	color: $color_1;
+	border: 2px dashed $background-color_8;
+	display: inline-block;
+	transition: transform 0.3s;
+  
+	input[type="file"] {
+	  @include positioned(absolute,0 , 0, 0,0 );
+	  height: 100%;
+	  width: 100%;
+	  opacity: 0;
+	}
+	
+	&.draging {
+	  transform: scale(1.1);
+	}
+}
+
+#preview {
+	text-align: center;
+	img {
+	    max-width: 30%;
+	}
+}
+
+
+nav {
+	@include felx-center;
+	@include felx-space-between;
+	background-color: $background-color_3;
+	@include padding(5px, 5%, 5px,5% );
+	@include positioned(sticky,0 ,0 ,0 ,0 );
+	z-index: 1;
+}
+
+.logo {
+	@include width-height(160px,auto);
+	@include margin( 0, 45px,0 ,0 );
+}
+
+.nav_left,
+.nav_right {
+	@include felx-center;
+}
+
+.nav_left ul li {
+	list-style: none;
+	display: inline-block;
+}
+
+.nav_left ul li img {
+	@include width-height(28px,auto);
+	@include margin(0,15px ,0 ,15px );
+}
+
+.nav_user_icon img {
+	@include width-height(40px,auto);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.nav_user_icon {
+	@include margin(0, 0, 0,30px );
+}
+
+.search_box {
+	background: $background-color_1;
+	@include width-height(350px,auto);
+	border-radius: 20px;
+	@include felx-center;
+	@include padding(0,15px ,0 ,15px )
+}
+
+.search_box img {
+	@include width-height(18px,auto);
+}
+
+.search_box input {
+	@include width-height(100%,auto);
+	background-color: $background-color_4;
+	@include padding(10px,10px ,10px ,10px );
+	outline: none;
+	border: none;
+}
+
+.online_icon {
+	@include positioned(relative,0 ,0 ,0 ,0 );
+}
+
+.online_icon::after {
+	content: ' ';
+	@include width-height(7px,7px);
+	background-color: #41db51;
+	border-radius: 50%;
+	border: 2px solid $color_4;
+	@include positioned(absolute,0 ,0 ,0 ,0 );
+}
+
+.container {
+	@include felx-space-between;
+	padding: 13px 5%;
+	@include padding(13px, 5%,13px ,5% );
+}
+
+.left_sidebar {
+	flex-basis: 25%;
+	@include positioned(sticky ,90px ,0 ,0 ,0 );
+	align-self: flex-start;
+}
+
+.right_sidebar {
+	background-color: $color_4;
+	flex-basis: 25%;
+	@include padding(20px,20px ,20px ,20px );
+	@include width-height(auto,89vh);
+	border-radius: 4px;
+	color: $color_2;
+	@include positioned(sticky ,70px ,0 ,0 ,0 );
+	align-self: flex-start;
+}
+
+.main_content {
+	flex-basis: 47%;
+}
+
+.important_link a,
+.shortcut_links a {
+	text-decoration: none;
+	@include felx-center;
+	@include margin(0, 0,30px ,0 );
+	color: $color_2;
+	@include width-height(fit-content,auto);
+}
+
+.important_link a img {
+	@include width-height(25px,auto);
+	@include margin(0,15px ,0 ,0 );
+}
+
+.important_link a:last-child {
+	color: $color_3;
+}
+
+.important_link {
+	border-bottom: 1px solid $background-color_8;
+}
+
+.shortcut_links a img {
+	@include width-height(40px,auto);
+	border-radius: 4px;
+	@include margin(0,15px ,0 ,0 );
+}
+
+.shortcut_links p {
+	@include margin(25px,0 ,25px ,0 );
+	color: $color_2;
+	font-weight: 500;
+}
+
+.sider_bar_title {
+	@include felx-center;
+	@include felx-space-between;
+	@include margin( 0, 0,18px ,0 );
+}
+
+.right_sidebar h4 {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.sider_bar_title a {
+	text-decoration: none;
+	color: $color_3;
+	font-size: 12px;
+}
+
+.event {
+	display: flex;
+	font-size: 14px;
+	@include margin(0,0 ,20px ,0 );
+}
+
+.event .Left_event {
+	border-radius: 10px;
+	@include width-height(65px,65px);
+	margin-right: 15px;
+	@include padding(10px,0 ,0 ,0 );
+	text-align: center;
+	@include positioned(relative,0 ,0 ,0 ,0 );
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.event .Left_event span {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	@include width-height(100%,auto);
+	color: $color_4;
+	background-color: $color_3;
+	font-size: 10px;
+	@include padding( 4px, 0,4px ,0 );
+}
+.event .Right_event p {
+	font-size: 12px;
+}
+
+.event .Right_event a {
+	font-size: 12px;
+	text-decoration: none;
+	color: $color_3;
+}
+
+.advirsment_side_bar {
+	@include width-height(100%,auto);
+	@include margin(0,0 ,20px ,0 );
+	border-radius: 4px;
+}
+
+.online_list {
+	@include felx-center;
+	@include margin(0, 0,20px ,0 );
+}
+
+.online_list .online_icon img {
+	@include width-height(40px,auto);
+	border-radius: 50%;
+}
+
+.online_list .online_icon {
+	@include width-height(40px,auto);
+	border-radius: 50%;
+	@include margin(0,15px ,0 ,0 );
+}
+
+.online_list .online_icon::after {
+	top: unset;
+	bottom: 5px;
+}
+
+.story_gallery {
+	@include felx-space-between;
+	@include margin(0,0 ,20px ,0 );
+}
+
+.story {
+	flex-basis: 18%;
+	@include padding(32%, 0,0 ,0 );
+	@include positioned(relative,0 ,0 ,0 ,0 );
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url(images/5.jpg);
+	background-position: center;
+	background-size: cover;
+	border-radius: 10px;
+}
+.story img {
+	@include positioned(absolute,0 ,0 ,0 ,0 );
+	@include width-height(45px,auto);
+	border-radius: 50%;
+	border: 5px solid  $color_3;
+}
+.story p {
+	position: absolute;
+	bottom: 10px;
+	@include width-height(100%,auto);
+	text-align: center;
+	color: $color_4;
+	font-size: 14px;
+}
+//implement 4 story using for loop
+@for $i from 2 through 5 {
+    .story#{$i}{
+        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('images/#{$i}.jpg');
+    }
+}
+
+.story1 img {
+	top: unset;
+	left: 50%;
+	bottom: 40px;
+	transform: translateX(-50%);
+	border: 0;
+	@include width-height(35px,auto);
+}
+
+.user_profile {
+	@include felx-center;
+}
+.user_profile img {
+	@include width-height(45px,auto);
+	border-radius: 50%;
+	@include margin(0,10px ,0 ,0 );
+}
+.user_profile p {
+	@include margin(0,0 ,-5px ,0 );
+	font-weight: 500;
+	color: $color_2;
+}
+.user_profile small {
+	font-size: 12px;
+}
+.post_input_container {
+	@include padding(20px,0 , 0,55px );
+}
+.post_input_container input {
+	@include width-height(100%,auto);
+	border: 0;
+	border-bottom: 1px solid $background-color_8;
+	background-color: $background-color_4;
+	outline: none;
+	@include margin(0, 0,-330000000px ,0 );
+	resize: none;
+}
+.add_post_link {
+	display: flex;
+	@include margin(-20px,0 ,0 ,0 );
+}
+.add_post_link a {
+	text-decoration: none;
+	@include felx-center;
+	color: $color_2;
+	@include margin(0,30px ,0 ,0 );
+	font-size: 13px;
+}
+.add_post_link a img {
+	@include width-height(20px,auto);
+	@include margin(0,10px ,0 ,0 );
+}
+.post_container {
+	@include width-height(100%,auto);
+	background-color: $color_4;
+	border-radius: 6px;
+	@include padding(20px, 20px,20px ,20px );
+	color: $color_2;
+	@include margin(20px,0 ,20px ,0 );
+}
+.add_post_container{
+	max-width: 100%;
+	background-color: $color_4;
+	border-radius: 6px;
+	@include padding(20px, 20px,20px ,20px );
+	color: $color_2;
+	@include margin(20px,0 ,20px ,0 );
+	display: none;
+}
+.user_profile span {
+	font-size: 13px;
+	color: $color_5;
+}
+.post_text {
+	color: $color_5;
+	font-size: 15px;
+	@include margin(15px,0 ,15px ,0 );
+}
+.post_text span {
+	color: $color_2;
+	font-weight: 500;
+}
+.post_text a {
+	color: $color_3;
+	text-decoration: none;
+}
+.post_img {
+	@include width-height(100%,auto);
+	border-radius: 4px;
+	@include margin(0,0 ,5px ,0 );
+}
+.post_row {
+	@include felx-center;
+	@include felx-space-between;
+}
+.post_row .activity_icon div img {
+	@include width-height(18px,auto);
+	@include margin(0,10px ,0 ,0 );
+}
+.post_row .activity_icon div {
+	display: inline-flex;
+	align-items: center;
+	@include margin(0,30px ,0 ,0 );
+}
+.post_profile_icon {
+	@include felx-center;
+}
+.post_profile_icon img {
+	@include width-height(20px,auto);
+	border-radius: 50%;
+	@include margin(0,5px ,0 ,0 );
+}
+.post_row a {
+	color:$color_5 ;
+}
+.our_btn {
+	display: block;
+	@include margin(auto,auto  ,auto  ,auto  );
+	cursor: pointer;
+	@include padding(5px, 10px,5px ,10px );
+	border: 1px solid $color_2;
+	background: $background-color_4;
+	border-radius: 4px;
+}
+.setting_menu {
+	position: absolute;
+	@include width-height(90%,auto);
+	max-width: 350px;
+	background-color: $color_4;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+	top: 108%;
+	right: 5%;
+	max-height: 0;
+	transition: max-height 1s;
+	border-radius: 4px;
+}
+.setting_menu_height {
+	max-height: 450px;
+}
+.user_profile a {
+	font-size: 12px;
+	color: $color_3;
+	text-decoration: none;
+}
+.settings_menu_inner {
+	@include padding(20px, 20px,20px ,20px );
+
+}
+.setting_menu hr {
+	border: 0;
+	@include width-height(auto,1px);
+	background-color: $color_5;
+	@include margin(15px,0 ,15px ,0 );
+}
+.setting_link {
+	@include felx-center;
+	@include margin(15px,0 ,15px ,0 );
+}
+.setting_link .setting_icon {
+	@include width-height(38px,auto);
+	@include margin(0,10px ,0 ,0 );
+	border-radius: 50%;
+}
+.setting_link a {
+	flex: 1;
+	@include felx-center;
+	@include felx-space-between;
+	text-decoration: none;
+	color: $color_2;
+}
+#dark_btn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: $background-color_8;
+	@include width-height(45px,auto);
+	border-radius: 15px;
+	padding: 2px 3px;
+	@include padding(2px, 3px,2px ,3px );
+	cursor: pointer;
+	display: flex;
+	transition: padding-left 0.3s, background-color 0.5s;
+}
+#dark_btn span {
+	width: 18px;
+	height: 18px;
+	background-color: $color_4;
+	border-radius: 50%;
+	display: inline-block;
+}
+.dark_btn_on {
+	@include margin(0,0 ,0 ,23px );
+	background-color: $color_6;
+}
+
+
+
+#button_value {
+	@include padding(10px,30px,10px,30px);
+	@include margin(0,0,-440px,430px);
+	
+}
+

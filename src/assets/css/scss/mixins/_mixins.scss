@@ -1,0 +1,26 @@
+//mixin File 
+@mixin felx-center{
+	display: flex;
+	align-items: center;
+}
+@mixin felx-space-between{
+	display: flex;
+	justify-content: space-between;
+}
+@mixin padding($top, $right, $bottom, $left) {
+	padding: $top $right $bottom $left;
+}
+@mixin margin($top, $right, $bottom, $left) {
+	margin: $top $right $bottom $left;
+}
+@mixin positioned($position, $top, $right, $bottom, $left) {
+	position: $position;
+	top: $top;
+	left: $left;
+	right: $right;
+	bottom: $bottom;
+}
+@mixin width-height($width,$height){
+	width:$width;
+	height:$height;
+}

@@ -1,0 +1,39 @@
+// _mixins.scss
+
+@mixin user-profile {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 45px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    p {
+        margin-bottom: -5px;
+        font-weight: 500;
+        color: $primary-color;
+    }
+
+    small {
+        font-size: $small-font-size;
+    }
+}
+
+@mixin post-input-container {
+    padding-left: 55px;
+    padding-top: 20px;
+
+    input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+        outline: none;
+        margin-bottom: -330000000px;
+        resize: none;
+    }
+}
+
+
