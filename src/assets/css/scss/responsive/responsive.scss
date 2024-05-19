@@ -72,4 +72,33 @@
 		margin-bottom: -440px;
 		margin-left: 250px;
 	  }
+	  .profile_container {
+        padding: 20px 5%;
+    }
+
+    .profile_detail {
+        flex-wrap: wrap;
+    }
+
+    .proflie_detail_right {
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    .proflie_detail_right button {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+    .profile_info {
+        flex-wrap: wrap;
+    }
+
+    .info_col {
+        flex-basis: 100%;
+    }
+
+    .post_col {
+        flex-basis: 100%;
+    }
 }

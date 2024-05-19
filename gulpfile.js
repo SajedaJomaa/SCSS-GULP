@@ -72,8 +72,8 @@ gulp.task('script', function () {
 gulp.task('watch', function () {
     require('./server.js')
     livereload.listen();
-    gulp.watch('./src/index.html', gulp.series('html'));
-    gulp.watch('./src/assets/css/scss/style.scss', gulp.series('css'));
+    gulp.watch('./src/*.html', gulp.series('html'));
+    gulp.watch('./src/assets/css/scss/*.scss', gulp.series('css'));
     gulp.watch('./src/assets/js/*.js', gulp.series('script'));
     // gulp.watch('dist/**/*.*', gulp.series('compress'));
     // gulp.watch('dist/**/*.*', gulp.series('deploy'));

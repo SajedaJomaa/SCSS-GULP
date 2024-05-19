@@ -100,7 +100,7 @@ document.getElementById('button_value').onclick = () => {
         </div>
     `;
 
-    if (window.location.href === 'http://localhost:8000/userProfile.html#') {
+    if (window.location.href === 'http://localhost:8000/userProfile.html') {
         document.body.querySelector('.post_col').appendChild(add_post_container);
     } else {
         document.body.querySelector('.main_content').appendChild(add_post_container);

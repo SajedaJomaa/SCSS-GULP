@@ -1,9 +1,9 @@
-//mixin File 
-@mixin felx-center{
+//mixin main page File 
+@mixin flex-center{
 	display: flex;
 	align-items: center;
 }
-@mixin felx-space-between{
+@mixin flex-space-between{
 	display: flex;
 	justify-content: space-between;
 }
@@ -24,3 +24,4 @@
 	width:$width;
 	height:$height;
 }
+
