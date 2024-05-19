@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <title>User Profile</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav_left">
+            <a href="./index.html">
+                <img src="images/facebook-logo-white-11549682110gwzzzhtxz3-removebg-preview.png" alt="Logo"
+                    class="logo">
+            </a>
+            <ul>
+                <li><img src="images/notification.png" alt="notification"></li>
+                <li><img src="images/inbox.png" alt="inbox"></li>
+                <li><img src="images/video.png" alt="video"></li>
+            </ul>
+        </div>
+        <div class="nav_right">
+            <div class="search_box">
+                <img src="images/search.png" alt="search">
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="nav_user_icon online_icon" onclick="settingsMenuToggle()">
+                <img src="images/1.jpg" alt="profile">
+            </div>
+        </div>
+        <!-- todo: setting menu -->
+        <div class="setting_menu">
+
+            <div id="dark_btn" class="dark_btn_on">
+                <span></span>
+            </div>
+
+            <div class="settings_menu_inner">
+                <div class="user_profile">
+                    <img src="images/1.jpg" alt="Pro We Are Pro You Now">
+                    <div>
+                        <p>Sajeda Jomaa</p>
+                        <a href="#">See Your Profile</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="user_profile">
+                    <img src="images/feedback.png" alt="">
+                    <div>
+                        <p>Give Feedback</p>
+                        <a href="#">Help Us To improve new design</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="setting_link">
+                    <img src="images/setting.png" class="setting_icon" alt="">
+                    <a href="#">Setting & Privacy <img src="images/arrow.png" alt="" width="10px"></a>
+                </div>
+                <div class="setting_link">
+                    <img src="images/help.png" class="setting_icon" alt="">
+                    <a href="#">Help & Support <img src="images/arrow.png" alt="" width="10px"></a>
+                </div>
+                <div class="setting_link">
+                    <img src="images/display.png" class="setting_icon" alt="">
+                    <a href="#">Dispaly & Accesiblity <img src="images/arrow.png" alt="" width="10px"></a>
+                </div>
+                <div class="setting_link">
+                    <img src="images/logout.png" class="setting_icon" alt="">
+                    <a href="#">Logout<img src="images/arrow.png" alt="" width="10px"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- todo: Profile Page -->
+    <div class="profile_container">
+        <img src="images/273035149_3214417892140711_7324679162661422025_n.jpg" alt="cover" class="cover">
+        <div class="profile_detail">
+            <div class="proflie_detail_left">
+                <div class="profile_row">
+                    <img src="images/1.jpg" alt="Profile" class="pd_image">
+                    <div>
+                        <h3>Sajeda Jomaa</h3>
+                        <p>150 Freinds - 398 Mutal</p>
+                        <img src="images/1.jpg" alt="">
+                        <img src="images/2.jpg" alt="">
+                        <img src="images/3.jpg" alt="">
+                        <img src="images/4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="proflie_detail_right">
+                <button type="button"><img src="images/add-friends.png" alt="">Freinds</button>
+                <button type="button"><img src="images/message.png" alt="">Message</button>
+                <br />
+                <a href="#"><img src="images/more.png" alt=""></a>
+            </div>
+        </div>
+        <div class="profile_info">
+            <div class="info_col">
+                <div class="profile_intro">
+                    <h3>Intro</h3>
+                    <p class="intro_text">لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَلِكَ أَمْراً 💙💙
+                    </p>
+                    <hr>
+                    <ul>
+                        <li> <img src="images/profile-job.png" alt="">Trainee At ASAL </li>
+                        <li> <img src="images/profile-study.png" alt=""> Studies Computer Systems Engineering at
+                            Palestine Technical University - Kadoorie</li>
+
+                        <li> <img src="images/profile-home.png" alt=""> Lives in Palestine ,Tulkarm</li>
+                        <li> <img src="images/profile-location.png" alt=""> From Palestine, Tulkarm</li>
+                    </ul>
+                </div>
+                <div class="profile_intro">
+                    <div class="title_box">
+                        <h3>Photos</h3>
+                        <a href="">All Photos</a>
+                    </div>
+                    <div class="photo_box">
+                        <div><img src="images/1.jpg" alt=""></div>
+                        <div><img src="images/2.jpg" alt=""></div>
+                        <div><img src="images/3.jpg" alt=""></div>
+                        <div><img src="images/4.jpg" alt=""></div>
+                        <div><img src="images/5.jpg" alt=""></div>
+                        <div><img src="images/3.jpg" alt=""></div>
+
+                    </div>
+                </div>
+                <div class="profile_intro">
+                    <div class="title_box">
+                        <h3>Freinds</h3>
+                        <a href="">All Freinds</a>
+                    </div>
+                    <p>120 (10 mutal)</p>
+                    <div class="freinds_box">
+                        <div><img src="images/4.jpg" alt="">
+                            <p>amal jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>Fofo Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>JOJO Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>tala Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>tole Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>sand Barham</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>tia Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>zaina Jomaa</p>
+                        </div>
+                        <div><img src="images/4.jpg" alt="">
+                            <p>reem Jomaa</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="post_col">
+                <div class="post_container">
+                    <div class="user_profile">
+                        <img src="images/5.jpg" alt="Pro We Are Pro You Now">
+                        <div>
+                            <p>Sajeda Jomaa</p>
+                            <small>Public </small>
+                        </div>
+                    </div>
+                    <div class="post_input_container">
+                        <input id="input_value" placeholder="What's on Your Mind" />
+                        <div class="uploadOuter">
+                            <span class="dragBox">
+                                Darg and Drop image here
+                                <input type="file" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()"
+                                    id="uploadFile" />
+                            </span>
+                        </div>
+                        <div id="preview"></div>
+                        <button id="button_value">Post</button>
+                        <div class="add_post_link">
+                            <a href="#"><img id="post-video" src="images/live-video.png" alt="Its Video Time">Live
+                                Video</a>
+                            <a href="#"><img id="post-pic" src="images/photo.png" alt="Its Video Time">Photo/Video</a>
+                            <a href="#"><img id="post-felling" src="images/feeling.png"
+                                    alt="Its Video Time">Feeling/Activity</a>
+                            <div id="webCam">
+                                <video id="vid"></video>
+                            </div>
+                            <ul class="utility-group">
+                                <li class="emoji-selector" id="emojiSelector">
+                                    <ul id="emojiList" class="emoji-list">
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
