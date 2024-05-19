@@ -48,7 +48,7 @@
     @include padding(20px,20px ,20px ,20px );
 	display: none;
 	strong {
-	    padding: 0 10px;
+		@include padding(0,10px,0,10px);
 	}
 }
 
@@ -66,8 +66,7 @@
   
 	input[type="file"] {
 	  @include positioned(absolute,0 , 0, 0,0 );
-	  height: 100%;
-	  width: 100%;
+	  @include width-height(100%,100%);
 	  opacity: 0;
 	}
 	
@@ -85,8 +84,8 @@
 
 
 nav {
-	@include felx-center;
-	@include felx-space-between;
+	@include flex-center;
+	@include flex-space-between;
 	background-color: $background-color_3;
 	@include padding(5px, 5%, 5px,5% );
 	@include positioned(sticky,0 ,0 ,0 ,0 );
@@ -100,7 +99,7 @@ nav {
 
 .nav_left,
 .nav_right {
-	@include felx-center;
+	@include flex-center;
 }
 
 .nav_left ul li {
@@ -127,7 +126,7 @@ nav {
 	background: $background-color_1;
 	@include width-height(350px,auto);
 	border-radius: 20px;
-	@include felx-center;
+	@include flex-center;
 	@include padding(0,15px ,0 ,15px )
 }
 
@@ -157,7 +156,7 @@ nav {
 }
 
 .container {
-	@include felx-space-between;
+	@include flex-space-between;
 	padding: 13px 5%;
 	@include padding(13px, 5%,13px ,5% );
 }
@@ -186,7 +185,7 @@ nav {
 .important_link a,
 .shortcut_links a {
 	text-decoration: none;
-	@include felx-center;
+	@include flex-center;
 	@include margin(0, 0,30px ,0 );
 	color: $color_2;
 	@include width-height(fit-content,auto);
@@ -218,8 +217,8 @@ nav {
 }
 
 .sider_bar_title {
-	@include felx-center;
-	@include felx-space-between;
+	@include flex-center;
+	@include flex-space-between;
 	@include margin( 0, 0,18px ,0 );
 }
 
@@ -278,7 +277,7 @@ nav {
 }
 
 .online_list {
-	@include felx-center;
+	@include flex-center;
 	@include margin(0, 0,20px ,0 );
 }
 
@@ -299,7 +298,7 @@ nav {
 }
 
 .story_gallery {
-	@include felx-space-between;
+	@include flex-space-between;
 	@include margin(0,0 ,20px ,0 );
 }
 
@@ -343,7 +342,7 @@ nav {
 }
 
 .user_profile {
-	@include felx-center;
+	@include flex-center;
 }
 .user_profile img {
 	@include width-height(45px,auto);
@@ -376,7 +375,7 @@ nav {
 }
 .add_post_link a {
 	text-decoration: none;
-	@include felx-center;
+	@include flex-center;
 	color: $color_2;
 	@include margin(0,30px ,0 ,0 );
 	font-size: 13px;
@@ -425,8 +424,8 @@ nav {
 	@include margin(0,0 ,5px ,0 );
 }
 .post_row {
-	@include felx-center;
-	@include felx-space-between;
+	@include flex-center;
+	@include flex-space-between;
 }
 .post_row .activity_icon div img {
 	@include width-height(18px,auto);
@@ -438,7 +437,7 @@ nav {
 	@include margin(0,30px ,0 ,0 );
 }
 .post_profile_icon {
-	@include felx-center;
+	@include flex-center;
 }
 .post_profile_icon img {
 	@include width-height(20px,auto);
@@ -489,7 +488,7 @@ nav {
 	@include margin(15px,0 ,15px ,0 );
 }
 .setting_link {
-	@include felx-center;
+	@include flex-center;
 	@include margin(15px,0 ,15px ,0 );
 }
 .setting_link .setting_icon {
@@ -499,8 +498,8 @@ nav {
 }
 .setting_link a {
 	flex: 1;
-	@include felx-center;
-	@include felx-space-between;
+	@include flex-center;
+	@include flex-space-between;
 	text-decoration: none;
 	color: $color_2;
 }
@@ -511,15 +510,13 @@ nav {
 	background-color: $background-color_8;
 	@include width-height(45px,auto);
 	border-radius: 15px;
-	padding: 2px 3px;
 	@include padding(2px, 3px,2px ,3px );
 	cursor: pointer;
 	display: flex;
 	transition: padding-left 0.3s, background-color 0.5s;
 }
 #dark_btn span {
-	width: 18px;
-	height: 18px;
+	@include width-height(18px,18px);
 	background-color: $color_4;
 	border-radius: 50%;
 	display: inline-block;
@@ -537,3 +534,203 @@ nav {
 	
 }
 
+
+//*************************************************************
+//*****************Profile User********************************
+//*************************************************************
+
+
+/* todo: profile page  */
+.profile_container {
+	@include padding(20px,15%,20px,15%);
+    color: $color_2;
+}
+
+.cover {
+	@include width-height(100%,auto);
+    border-radius: 6px;
+	@include margin(0,0,14px,0);
+}
+
+.profile_detail {
+    background-color: $background-color_6;
+	@include padding(20px,20px,20px,20px);
+    border-radius: 4px;
+	@include flex-space-between;
+    align-items: flex-start;
+   
+}
+
+.profile_row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.pd_image {
+	@include width-height(100px,auto);
+	@include margin(0,20px,0,0);
+    border-radius: 6px;
+}
+
+.profile_row div h3 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.profile_row div p {
+    font-size: 13px;
+}
+
+.profile_row div img {
+    border-radius: 50%;
+	@include width-height(25px,auto);
+	@include margin(12px,0,0,0);
+}
+
+.proflie_detail_right button {
+    background-color: $color_3;
+    border: 0;
+    outline: 0;
+	@include padding(6px,10px,6px,10px);
+    display: inline-block;
+    align-items: center;
+    color: #fff;
+    border-radius: 3px;
+	@include margin(0,0,0,10px);
+    cursor: pointer;
+}
+
+.proflie_detail_right img {
+	@include width-height(0,15px);
+	@include margin(0,10px,0,0);
+}
+
+.proflie_detail_right button:first-child {
+    background-color: $background-color_10;
+    color: $color_6;
+}
+
+.proflie_detail_right {
+    text-align: right;
+}
+
+.proflie_detail_right a {
+    background-color: $background-color_10;
+    border-radius: 3px;
+	@include padding(12px,12px,12px,12px);
+    display: inline-flex;
+	@include margin(30px,0,0,0);
+	@include width-height(0,20px);
+}
+
+.proflie_detail_right a img {
+	@include width-height(20px,5px);
+	@include margin(-2px,0,0,5px);
+}
+
+.profile_info {
+    align-items: flex-start;
+	@include flex-space-between;
+	@include margin(20px,0,0,0);
+
+}
+
+.info_col {
+    flex-basis: 33%;
+}
+
+.post_col {
+    flex-basis: 65%;
+	@include margin(-20px,0,0,0);
+}
+
+.profile_intro {
+    background-color: #fff;
+	@include padding(20px,20px,20px,20px);
+	@include margin(0,0,20px,0);
+    border-radius: 4px;
+}
+
+.profile_intro h3 {
+    font-weight: 600;
+}
+
+.intro_text {
+    text-align: center;
+	@include margin(10px,0,10px,0);
+    font-size: 15px;
+}
+
+.intro_text img {
+	@include width-height(15px,auto);
+	@include margin(0,0,-3px,0);
+}
+
+.profile_intro hr {
+    border: 0;
+	@include width-height(auto,1px);
+    background-color: $background-color_8;
+	@include margin(24px,24px,24px,24px);
+}
+
+.profile_intro ul li {
+    list-style-type: none;
+    font-size: 15px;
+    @include margin(15px,0,15px,0);
+    @include flex-center;
+}
+
+.profile_intro ul li img {
+	@include width-height(26px,auto);
+	@include margin(0,10px,0,0);
+}
+
+.title_box {
+    @include flex-center;
+    @include flex-space-between;
+}
+
+.title_box a {
+    text-decoration: none;
+    color: $color_3;
+    font-size: 14px;
+}
+
+.photo_box {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+	@include margin(15px,0,0,0);
+}
+
+.photo_box div img {
+	@include width-height(100%,auto);
+    cursor: pointer;
+}
+
+.profile_intro p {
+    font-size: 14px;
+}
+
+.freinds_box {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+	@include margin(15px,0,0,0);
+}
+
+.freinds_box div img {
+	@include width-height(100%,auto);
+    cursor: pointer;
+	@include padding(0,0,20px,0);
+}
+
+.freinds_box div {
+    position: relative;
+}
+
+.freinds_box p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
