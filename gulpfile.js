@@ -10,7 +10,7 @@ const gulp = require('gulp'),
 let notify = require("gulp-notify");
 
 gulp.task('html', function () {
-    return gulp.src('./src/index.html')
+    return gulp.src('./src/*.html')
         .pipe(sourcemaps.init())
         // .pipe(pug())
         .pipe(sourcemaps.write('.'))
