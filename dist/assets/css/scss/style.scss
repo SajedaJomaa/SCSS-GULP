@@ -1,62 +1,48 @@
 @import './mixins/mixins';
 @import './modules/normalize';
 @import './variables/var';
+@import './responsive/responsive.scss';
 
-.edit{
-	display: flex;
-	justify-content: center;
-	@include width-height(100%,auto);
-	cursor: pointer;
-	@include padding(5px, 5px,5px ,5px );
-	border:none ;
-	background:  $background-color_10;
-	border-radius: 4px;
-    font-size: 15px;
-	font-weight: 600;
-	line-height: 19.9995px;
-	color: $color_8;
+
+
+
+#previewLink {
+    display: none;
+	@include width-height(600px,200px);
+	@include margin(20px,0,0,0);
+	border: 2px dashed $background-color_8;
+    position: relative;
+
 }
 
-#demo {
-	background: #fff;
-	width: 450px;
-	padding: 8px;
-	border: 1px solid #ccc;
-	margin: 50px auto;
-	display: none;
+#previewLink .mini-preview-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-#review {
-	width: 100%;
-	font-size: 12px;
-	box-sizing: border-box;
-	margin-top: 10px;
-	display: none;
+#previewLink .mini-preview-frame {
+    width: 400%;
+    height: 400%;
+    transform: scale(0.25);
+    transform-origin: 0 0;
 }
-#review a {
-	color: #333;
-	text-decoration: none;
-}
-#review div {
-	width: 100%;
-	padding: 8px;
-	border: 1px solid #ddd;
-	box-sizing: border-box
-}
-#review img {
-	width: 100%
-}
-#review h4,
-#review p {
-	margin: 0px;
-	margin-bottom: 10px
-}
-#review span {
-	color: #aaa;
-	text-transform: uppercase
-}
-#review img.loading {
-	width: 50px
+
+#previewLink .mini-preview-cover {
+    width: 250px;
+    height: 100px;
+    position: relative;
+
+	text-align: center;
+	font-weight: bold;
+	line-height: 95px;
+	border: 2px dashed ;
+	display: inline-block;
+	transition: transform 0.3s;
 }
 .emoji-selector {
 	background-color: $background-color_2;
@@ -161,7 +147,7 @@ nav {
 	align-items: center;
 }
 .nav_center ul{
-	@include width-height(400px,auto);
+	@include width-height(500px,auto);
     @include flex-space-between;
     align-items: center;
 }
@@ -185,6 +171,7 @@ nav {
 }
 	
 .nav_right ul li svg {
+	// @include width-height(10px,10px);
 	@include margin(10px,10px ,10px ,10px );
 
 }
@@ -383,7 +370,7 @@ nav {
 	flex-basis: 18%;
 	@include padding(32%, 0,0 ,0 );
 	@include positioned(relative,0 ,0 ,0 ,0 );
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url(/images/5.jpg);
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
@@ -405,7 +392,7 @@ nav {
 //implement 4 story using for loop
 @for $i from 2 through 5 {
     .story#{$i}{
-        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/#{$i}.jpg');
+        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('/images/#{$i}.jpg');
     }
 }
 
@@ -462,37 +449,22 @@ nav {
 	@include margin(0,10px ,0 ,0 );
 }
 .post_container {
-	
-	@include width-height(98%,auto);
-	background-color: $color_4;
-	border-radius: 6px;
-	@include padding(20px, 20px,20px ,20px );
-	color: $color_2;
-	@include margin(20px,0 ,20px ,10px);
-}
-.grid_image_container{
-	display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-}
-.add_post_container {
-	max-width: 100%;
-	background-color: $color_4;
-	border-radius: 6px;
-	@include padding(20px, 20px,20px ,20px );
-	color: $color_2;
-	@include margin(20px,0 ,20px ,10px );
-	display: none;
-}
-.add_post_scrolling {
-	max-width: 100%;
+	@include width-height(100%,auto);
 	background-color: $color_4;
 	border-radius: 6px;
 	@include padding(20px, 20px,20px ,20px );
 	color: $color_2;
 	@include margin(20px,0 ,20px ,0 );
 }
-
+.add_post_container{
+	max-width: 100%;
+	background-color: $color_4;
+	border-radius: 6px;
+	@include padding(20px, 20px,20px ,20px );
+	color: $color_2;
+	@include margin(20px,0 ,20px ,0 );
+	display: none;
+}
 .user_profile span {
 	font-size: 13px;
 	color: $color_5;
@@ -631,45 +603,6 @@ nav {
 //*****************Profile User********************************
 //*************************************************************
 
-.story_gallery_profile {
-	@include flex-center;
-	@include width-height(100%, auto);
-	@include padding(5px,5px,5px,5px);
-  }
-  
-  .story_profile {
-	// flex-basis: 18%;
-	@include width-height(100%, 200px);
-	@include padding(10%, 0, 10%, 15%);
-	@include positioned(relative, 0, 0, 0, 0);
-	@include margin(0,5px,20px,5px);
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
-	background-position: center;
-	background-size: cover;
-	border-radius: 10px;
-  }
-  
-  .story_profile p {
-	position: absolute;
-	bottom: 10px;
-	text-align:center;
-	color: $color_4;
-	font-size: 14px;
-  }
-  h5{
-	position: absolute;
-	bottom: -17px;
-	text-align:center;
-	color: $color_8;
-	font-size: 13px;
-    font-weight: 600;
-	line-height: 16.0004px;
-  }
-  
-  .story_profile2 {
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/2.jpg');
-}
-  
 
 /* todo: profile page  */
 .profile_container {
@@ -678,8 +611,10 @@ nav {
 }
 
 .cover {
+	// @include padding(20px,15%,20px,15%);
 	@include width-height(100%,auto);
     border-radius: 6px;
+	// @include margin(0,0,14px,0);
 }
 .img-cover{
 
@@ -701,6 +636,10 @@ nav {
 	display: block;
     align-items: flex-start;
 	background-color: $background-color_6;
+	
+	// background-image: url('/images/273035149_3214417892140711_7324679162661422025_n.jpg');
+
+
 }
 
 .profile_row {
@@ -754,8 +693,13 @@ nav {
 
 .proflie_detail_right img {
 	@include width-height(15px,15px);
+	// @include margin(0,10px,0,0);
 }
 
+// .proflie_detail_right button:last-child {
+//     background-color: $background-color_10;
+//     color: $color_6;
+// }
 
 .proflie_detail_right {
     text-align: right;
@@ -792,7 +736,7 @@ nav {
 	font-size:15px ;
     font-weight: 600;
     line-height:  19.9995px;
-    color: $color_7;
+    color: rgb(101, 103, 107);
 }
 .profile_anchor_right{
     display: flex;
@@ -835,19 +779,13 @@ nav {
 }
 
 .profile_intro h3 {
-    font-weight: 700;
-	color: $color_8;
-	font-size: 20px;
-	line-height: 24px;
+    font-weight: 600;
 }
 
 .intro_text {
     text-align: center;
 	@include margin(10px,0,10px,0);
     font-size: 15px;
-	font-weight: 400;
-	line-height: 19.9995px;
-	color: $color_8;
 }
 
 .intro_text img {
@@ -923,137 +861,3 @@ nav {
     bottom: 0;
     left: 0;
 }
-
-//media Query File
-@media (max-width: 932px) {
-	.pd_image{
-		@include positioned(relative ,-70px,0,0,100px);
-		}
-    .profile_data{
-		@include positioned(relative ,140px,0,0,-40px);
-		@include margin(0,0,210px,0);
-    }
-	.profile_anchor_left{
-		@include width-height(100px,auto);
-	}
-	.profile_anchor_left a{
-        @include margin(0,0,0,10px);
-	}
-	.profile_anchor_right{
-		@include width-height(10px,auto);
-		@include positioned(absolute,575px,0,0,370px);
-	}
-	.proflie_detail_right{
-		@include width-height(270px,auto);
-		@include positioned(absolute ,80px,0,0,90px);
-	}
-	.anchor1,.anchor2,.anchor3{
-		display: none;
-	}
-	.right_sidebar {
-		display: none;
-	}
-
-	.left_sidebar {
-		display: none;
-	}
-
-	nav {
-		flex-wrap: wrap;
-	}
-	.nav_center{
-		display: none;
-	}
-	.search_box {
-		@include width-height(45px,45px);
-		@include margin(0,0,0,-45px);
-}
-	.logo {
-		width: 110px;
-		@include margin(0,20px,0,0);
-	}
-
-	.nav_left ul li img {
-		@include width-height(20px,auto);
-		@include margin(0,8px,0,8px);
-	}
-
-	.nav_user_icon img {
-		@include width-height(30px,auto);
-	}
-  
-	.nav_user_icon {
-		margin-left: 0;
-	}
-  
-	.add_post_link {
-		flex-wrap: wrap;
-	}
-  
-	.main_content {
-		flex-basis: 100%;
-		
-	}
-  
-	.story img {
-		width: 30px;
-		border-width: 3px;
-		bottom: 30px;
-	}
-  
-	.story p {
-		font-size: 10px;
-	}
-  
-	.add_post_link a {
-		font-size: 11px;
-		margin-right: 12px;
-	}
-  
-	.add_post_link a img {
-		width: 16px;
-		@include margin(0,5px,0,0);
-	}
-  
-	.post_input_container {
-		padding-left: 0;
-		width: 70%;
-	}
-	#button_value {
-        @include padding(10px,30px,10px,30px);
-        @include margin(0,0,-440px,250px);
-	  }
-	  .profile_container {
-		@include padding(20px,5%,20px,5%);
-
-    }
-
-    .profile_detail {
-        flex-wrap: wrap;
-    }
-
-    .proflie_detail_right {
-        text-align: left;
-		@include margin(15px,0,0,0);
-    }
-
-    .proflie_detail_right button {
-        margin-left: 0;
-        margin-right: 10px;
-		
-    }
-
-    .profile_info {
-        flex-wrap: wrap;
-    }
-
-    .info_col {
-        flex-basis: 100%;
-    }
-
-    .post_col {
-        flex-basis: 100%;
-    }
-}
-
-
