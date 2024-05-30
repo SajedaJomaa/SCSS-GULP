@@ -17,7 +17,6 @@ async function fetchData() {
             hasMore = false;
             return;
         }
-
         data.forEach(image => {
             const div = document.createElement('div');
             div.classList.add("add_post_scrolling");
@@ -27,12 +26,12 @@ async function fetchData() {
                     <div class="user_profile">
                         <img src="assets/images/5.jpg" alt="Profile Picture">
                         <div>
-                            <p>Sajeda Jomaa</p>
-                            <small>${new Date().toLocaleString()}<small>
+                            <p class="userName">Sajeda Jomaa</p>
+                            <small class="date">${new Date().toLocaleString()}<small>
                         </div>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur,</p>
+                <p class="postContent">Lorem ipsum dolor sit amet consectetur,</p>
                 <div class="post_image_container">
                     <img class="post_img" src="${image.download_url}" alt="Post Image">
                 </div>
