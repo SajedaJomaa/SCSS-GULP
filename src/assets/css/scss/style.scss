@@ -397,7 +397,7 @@ nav {
 	flex-basis: 18%;
 	@include padding(32%, 0,0 ,0 );
 	@include positioned(relative,0 ,0 ,0 ,0 );
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/5.jpg');
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
@@ -420,7 +420,7 @@ nav {
 //implement 4 story using for loop
 @for $i from 2 through 5 {
     .story#{$i}{
-        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/#{$i}.jpg');
+        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/#{$i}.jpg');
     }
 }
 
