@@ -18,24 +18,28 @@
 }
 
 #demo {
-	background: #fff;
-	width: 450px;
-	padding: 8px;
-	border: 1px solid #ccc;
-	margin: 50px auto;
-	display: none;
+	@include width-height(450px,auto);
+	@include margin(0,auto , 0,auto );
+	@include positioned(relative,0 ,0 ,0 ,0 );
+	color: $color_1;
+	border: 2px dashed $background-color_8;
+	transition: transform 0.3s;
+	display:none;
 }
-
+#status {
+	width: 100%;
+	border: none;
+	box-sizing: border-box
+}
 #review {
 	width: 100%;
 	font-size: 12px;
 	box-sizing: border-box;
 	margin-top: 10px;
-	display: none;
 }
 #review a {
 	color: #333;
-	text-decoration: none;
+	text-decoration: none
 }
 #review div {
 	width: 100%;
@@ -44,12 +48,12 @@
 	box-sizing: border-box
 }
 #review img {
-	width: 100%
+	width: 50%
 }
 #review h4,
 #review p {
 	margin: 0px;
-	margin-bottom: 10px
+	// margin-bottom: 10px
 }
 #review span {
 	color: #aaa;
@@ -58,39 +62,46 @@
 #review img.loading {
 	width: 50px
 }
+.url_preview{
+	@include padding(10px,0,0,0);
+}
 .emoji-selector {
-	background-color: $background-color_2;
-	border-radius: 1rem;
-	cursor: default;
-	display: none;
-	@include padding(0, 0, 0,0 );
-	border: 1px solid #eee;
-	@include positioned(absolute,75% ,0 ,0 ,50% );
-	@include width-height(325px,350px);
-	z-index: 5;
-	overflow: auto;
-	transition: padding-left 0.3s, background-color 0.5s; 
+    background-color: $background-color_2;
+    border-radius: 1rem;
+    cursor: default;
+    display: none;
+    @include padding(0, 0, 0, 0);
+    border: 1px solid #eee;
+    @include positioned(absolute, 135%, 0, 0, 50%);
+    @include width-height(325px, 350px);
+    z-index: 5;
+    overflow: auto;
+    transition: padding-left 0.3s, background-color 0.5s; 
 }
+
 .emoji-selector ul.emoji-list {
-	background-color: $background-color_2;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-	@include padding(0, 1rem, 1rem,1rem);
-	border-radius: 0;
-	z-index: 5;
+    background-color: $background-color_2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include padding(0, 1rem, 1rem, 1rem);
+    border-radius: 0;
+    z-index: 5;
 }
+
 .emoji-selector ul.emoji-list li {
-	@include width-height(35px,35px);
-	border-radius: 0.25rem;
-	font-size: 1.5rem;
+    @include width-height(35px, 35px);
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+    margin: 0.2rem; /* Added margin for better spacing */
 }
+
 .emoji-selector.active {
-	bottom: 110%;
-	opacity: 1;
-	pointer-events: all;
+    bottom: 110%;
+    opacity: 1;
+    pointer-events: all;
 }
 
 #webCam{
@@ -191,6 +202,7 @@ nav {
 
 .nav_user_icon img {
 	@include width-height(40px,40px);
+	object-fit: cover;
 	border-radius: 50%;
 	cursor: pointer;
 }
@@ -257,6 +269,7 @@ nav {
 
 .main_content {
 	flex-basis: 47%;
+	
 }
 
 .important_link a,
@@ -359,7 +372,8 @@ nav {
 }
 
 .online_list .online_icon img {
-	@include width-height(40px,auto);
+	@include width-height(40px,40px);
+	object-fit: cover;
 	border-radius: 50%;
 }
 
@@ -391,6 +405,7 @@ nav {
 .story img {
 	@include positioned(absolute,0 ,0 ,0 ,0 );
 	@include width-height(45px,45px);
+	object-fit: cover;
 	border-radius: 50%;
 	border: 5px solid  $color_3;
 }
@@ -423,6 +438,7 @@ nav {
 }
 .user_profile img {
 	@include width-height(45px,45px);
+	object-fit: cover;
 	border-radius: 50%;
 	@include margin(0,10px ,0 ,0 );
 }
@@ -433,6 +449,13 @@ nav {
 }
 .user_profile small {
 	font-size: 12px;
+}
+.postContent{
+	@include padding(10px,0,0,0);
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 19.9995px;
+	color:  rgb(5, 5, 5);
 }
 .post_input_container {
 	@include padding(20px,0 , 0,55px );
@@ -462,7 +485,6 @@ nav {
 	@include margin(0,10px ,0 ,0 );
 }
 .post_container {
-	
 	@include width-height(98%,auto);
 	background-color: $color_4;
 	border-radius: 6px;
@@ -470,27 +492,146 @@ nav {
 	color: $color_2;
 	@include margin(20px,0 ,20px ,10px);
 }
-.grid_image_container{
-	display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.grid_image_container {
+	@include padding(10px,0,10px,0);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
 }
+
+.grid_image_container .post_img {
+
+    @include width-height(200px,200px);
+    object-fit: cover;
+}
+
+.more_images {
+    position: relative;
+}
+
+.more_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Modal styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.image-modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 700px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Grid layout for post images */
+.grid_image_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.grid_image_container .post_img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.more_images {
+    position: relative;
+}
+
+.more_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
 .add_post_container {
 	max-width: 100%;
 	background-color: $color_4;
 	border-radius: 6px;
-	@include padding(20px, 20px,20px ,20px );
+	@include padding(10px, 20px,20px ,20px );
 	color: $color_2;
 	@include margin(20px,0 ,20px ,10px );
 	display: none;
 }
+
+.add_post_container .userName ,.user_profile .userName {
+	font-size: 15px;
+	font-weight: 600;
+	line-height:19.9995px ;
+    @include padding(0,0,2px,0);
+    color:rgb(5, 5, 5);
+}
+.add_post_container .date,.user_profile .date{
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 16.0004px;
+	@include padding(2px,0,2px,0);
+
+	color: rgb(101, 103, 107);
+}
 .add_post_scrolling {
-	max-width: 100%;
+	@include width-height(98%,auto);
 	background-color: $color_4;
 	border-radius: 6px;
 	@include padding(20px, 20px,20px ,20px );
 	color: $color_2;
-	@include margin(20px,0 ,20px ,0 );
+	@include margin(20px,0 ,20px ,10px);
 }
 
 .user_profile span {
@@ -518,6 +659,7 @@ nav {
 .post_row {
 	@include flex-center;
 	@include flex-space-between;
+	@include padding(10px,0,0px,0);
 }
 .post_row .activity_icon div img {
 	@include width-height(18px,auto);
@@ -527,6 +669,7 @@ nav {
 	display: inline-flex;
 	align-items: center;
 	@include margin(0,30px ,0 ,0 );
+	
 }
 .post_profile_icon {
 	@include flex-center;
@@ -617,10 +760,21 @@ nav {
 	@include margin(0,0 ,0 ,23px );
 	background-color: $color_6;
 }
+.delete_post{
+	background-color: #1877f2;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	@include padding(10px,30px,10px,30px);
 
+}
 
 
 #button_value {
+	background-color: #1877f2;
+	color: white;
+	border: none;
+	border-radius: 10px;
 	@include padding(10px,30px,10px,30px);
 	@include margin(0,0,-440px,430px);
 	
@@ -711,6 +865,7 @@ nav {
 .pd_image {
 	@include width-height(200px,200px);
 	@include margin(0,20px,0,0);
+	object-fit: cover;
     border-radius: 50%;
 	position: relative;
 	top: -70px;
@@ -893,7 +1048,8 @@ nav {
 }
 
 .photo_box div img {
-	@include width-height(100%,auto);
+	@include width-height(100%,100px);
+	object-fit: cover;
     cursor: pointer;
 }
 
@@ -909,7 +1065,8 @@ nav {
 }
 
 .freinds_box div img {
-	@include width-height(100%,auto);
+	@include width-height(100%,100px);
+	object-fit: cover;
     cursor: pointer;
 	@include padding(0,0,20px,0);
 }
