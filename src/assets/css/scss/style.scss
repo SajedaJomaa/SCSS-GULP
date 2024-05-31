@@ -11,9 +11,7 @@
 	border:none ;
 	background:  $background-color_10;
 	border-radius: 4px;
-    font-size: 15px;
-	font-weight: 600;
-	line-height: 19.9995px;
+	@include font-style(15px,600,19.9995px);
 	color: $color_8;
 }
 
@@ -27,23 +25,23 @@
 	display:none;
 }
 #status {
-	width: 100%;
+	@include width-height(100%,auto);
 	border: none;
 	box-sizing: border-box
 }
 #review {
-	width: 100%;
+	@include width-height(100%,auto);
 	font-size: 12px;
 	box-sizing: border-box;
-	margin-top: 10px;
+	@include margin(10px,0,0,0);
 }
 #review a {
 	color: #333;
 	text-decoration: none
 }
 #review div {
-	width: 100%;
-	padding: 8px;
+	@include width-height(100%,auto);
+    @include padding(8px,8px,8px,8px);
 	border: 1px solid #ddd;
 	box-sizing: border-box
 }
@@ -53,18 +51,58 @@
 #review h4,
 #review p {
 	margin: 0px;
-	// margin-bottom: 10px
 }
 #review span {
 	color: #aaa;
 	text-transform: uppercase
 }
 #review img.loading {
-	width: 50px
+	@include width-height(50px,auto);
 }
-.url_preview{
-	@include padding(10px,0,0,0);
+
+.url_preview {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	@include margin(10px,0,10px,0);
+    background-color:$background-color_6;
 }
+
+.url_preview a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.url_preview img {
+	@include width-height(100%,auto);
+    object-fit: cover;
+}
+
+.url_preview div {
+	@include padding(10px,10px,10px,10px);
+}
+
+.url_preview h4 {
+    font-size: 1.2em;
+	@include margin(0,0,0,0);
+    color: #333;
+}
+
+.url_preview p {
+	@include margin(5px,0,5px,0);
+    color: #666;
+}
+
+.url_preview span {
+    font-size: 0.9em;
+    color: $color_1;
+}
+
 .emoji-selector {
     background-color: $background-color_2;
     border-radius: 1rem;
@@ -104,11 +142,26 @@
     pointer-events: all;
 }
 
-#webCam{
-	display: none;
+#webCam {
+    display: none;
 	@include width-height(250px,100px);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white; 
+    border: 1px solid #ccc; 
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
-
+.close {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px; 
+    color: black; 
+}
 .uploadOuter {
 	text-align: center;
     @include padding(20px,20px ,20px ,20px );
@@ -397,7 +450,7 @@ nav {
 	flex-basis: 18%;
 	@include padding(32%, 0,0 ,0 );
 	@include positioned(relative,0 ,0 ,0 ,0 );
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/5.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
@@ -452,10 +505,8 @@ nav {
 }
 .postContent{
 	@include padding(10px,0,0,0);
-	font-size: 15px;
-	font-weight: 400;
-	line-height: 19.9995px;
-	color:  rgb(5, 5, 5);
+	@include font-style(15px,400,19.9995px);
+	color:  $color_8;
 }
 .post_input_container {
 	@include padding(20px,0 , 0,55px );
@@ -510,16 +561,11 @@ nav {
 }
 
 .more_overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+	@include positioned(absolute,0,0,0,0);
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    display: flex;
+	@include flex-center;
     align-items: center;
-    justify-content: center;
     font-size: 24px;
 }
 
@@ -530,8 +576,7 @@ nav {
     z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+	@include width-height(100%,100%);
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -539,7 +584,7 @@ nav {
 .image-modal-content {
     position: relative;
     margin: auto;
-    padding: 20px;
+	@include padding(20px,20px,20px,20px);
     width: 80%;
     max-width: 700px;
     background: white;
@@ -560,9 +605,9 @@ nav {
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+	position: absolute;
+	top: 3px;
+	right: 8px;
     color: black;
     font-size: 30px;
     font-weight: bold;
@@ -577,8 +622,7 @@ nav {
 }
 
 .grid_image_container .post_img {
-    width: 100%;
-    height: auto;
+	@include width-height(100%,auto);
     object-fit: cover;
 }
 
@@ -587,16 +631,11 @@ nav {
 }
 
 .more_overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+	@include positioned(absolute ,0,0,0,0);
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    display: flex;
+	@include flex-center;
     align-items: center;
-    justify-content: center;
     font-size: 24px;
 }
 
@@ -611,19 +650,15 @@ nav {
 }
 
 .add_post_container .userName ,.user_profile .userName {
-	font-size: 15px;
-	font-weight: 600;
-	line-height:19.9995px ;
+	@include font-style(15px,600,19.9995px );
     @include padding(0,0,2px,0);
     color:rgb(5, 5, 5);
 }
 .add_post_container .date,.user_profile .date{
-	font-size: 13px;
-	font-weight: 400;
-	line-height: 16.0004px;
+	@include font-style(13px,400,16.0004px);
 	@include padding(2px,0,2px,0);
 
-	color: rgb(101, 103, 107);
+	color: $color_7;
 }
 .add_post_scrolling {
 	@include width-height(98%,auto);
@@ -797,7 +832,7 @@ nav {
 	@include padding(10%, 0, 10%, 15%);
 	@include positioned(relative, 0, 0, 0, 0);
 	@include margin(0,5px,20px,5px);
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/5.jpg');
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
@@ -815,13 +850,11 @@ nav {
 	bottom: -17px;
 	text-align:center;
 	color: $color_8;
-	font-size: 13px;
-    font-weight: 600;
-	line-height: 16.0004px;
+	@include font-style(13px,600,16.0004px);
   }
   
   .story_profile2 {
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/2.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/2.jpg');
 }
   
 
@@ -829,15 +862,18 @@ nav {
 .profile_container {
 	@include padding(0,15%,20px,15%);
     color: $color_2;
+	
 }
 
 .cover {
 	@include width-height(100%,auto);
     border-radius: 6px;
+	
 }
 .img-cover{
 
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0)  80%, #140A00 100%);
+	// background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0)  80%, #140A00 100%);
+	border-image:  fill 0 linear-gradient(#0001,$color_6);
 	display: flex;
 }
 .img-cover img {
@@ -860,6 +896,7 @@ nav {
 .profile_row {
     display: flex;
     align-items: flex-start;
+	
 	}
 
 .pd_image {
@@ -875,7 +912,7 @@ nav {
 .profile_row div h3 {
     font-size: 32px;
     font-weight: 700;
-	color: rgb(5, 5, 5);
+	color:$color_8;
 }
 
 .profile_row div p {
@@ -944,9 +981,7 @@ nav {
 }
 .profile_anchor_left a {
 	text-decoration: none;
-	font-size:15px ;
-    font-weight: 600;
-    line-height:  19.9995px;
+	@include font-style(15px,600,19.9995px);
     color: $color_7;
 }
 .profile_anchor_right{
@@ -983,25 +1018,21 @@ nav {
 }
 
 .profile_intro {
-    background-color: #fff;
+    background-color: $background-color_6;
 	@include padding(20px,20px,20px,20px);
 	@include margin(0,0,20px,0);
     border-radius: 4px;
 }
 
 .profile_intro h3 {
-    font-weight: 700;
 	color: $color_8;
-	font-size: 20px;
-	line-height: 24px;
+	@include font-style(20px,700,24px);
 }
 
 .intro_text {
     text-align: center;
 	@include margin(10px,0,10px,0);
-    font-size: 15px;
-	font-weight: 400;
-	line-height: 19.9995px;
+	@include font-style(15px,400,19.9995px);
 	color: $color_8;
 }
 
@@ -1164,17 +1195,17 @@ nav {
   
 	.add_post_link a {
 		font-size: 11px;
-		margin-right: 12px;
+		@include margin(0,12px,0,0);
 	}
   
 	.add_post_link a img {
-		width: 16px;
+		@include width-height(16px,auto);
 		@include margin(0,5px,0,0);
 	}
   
 	.post_input_container {
 		padding-left: 0;
-		width: 70%;
+		@include width-height(70%,auto);
 	}
 	#button_value {
         @include padding(10px,30px,10px,30px);
