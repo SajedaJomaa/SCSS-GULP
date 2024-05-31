@@ -64,11 +64,23 @@ document.querySelectorAll('.add_post_link a').forEach(function (anchor) {
                     video.addEventListener("loadedmetadata", () => {
                         video.play();
                     });
+
+                    video.stream = stream;
                 })
                 .catch(alert);
         }
     });
 });
+document.querySelector('.close').addEventListener('click', function () {
+    let video = document.getElementById("vid");
+
+    if (video.stream) {
+        video.stream.getTracks().forEach(track => track.stop());
+    }
+
+    document.getElementById('webCam').style.display = 'none';
+});
+
 
 document.getElementById('button_value').onclick = () => {
     let inputValue = document.getElementById('input_value').value;
