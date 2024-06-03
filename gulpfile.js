@@ -40,7 +40,6 @@ gulp.task('css', function () {
 gulp.task('script', function () {
     return gulp.src('./src/assets/js/*.js')
         .pipe(sourcemaps.init())
-        .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/assets/js'))
