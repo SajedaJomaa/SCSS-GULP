@@ -84,7 +84,7 @@ gulp.task('script', function () {
 //     var conn = ftp.create({
 //         host: 'https://github.com/SajedaJomaa/GulpDeploy.git',//website
 //         user: 'SajedaJomaa',
-//         password: 'mypassEngSajeda#123456789',
+//         password: '',
 //         parallel: 10,
 //     });
 
