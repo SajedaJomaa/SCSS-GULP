@@ -1,11 +1,7 @@
 @import './mixins/mixins';
 @import './modules/normalize';
 @import './variables/var';
-
-// svg{
-// 	color: rgb(101, 103, 107);
-// 	@include width-height(24px,24px);
-// }
+@import './responsive/responsive';
 
 .edit{
 	display: flex;
@@ -261,7 +257,6 @@ nav {
 }
 
 .nav_center ul li svg {
-	// @include margin(10px,10px ,10px ,10px );
 		color: rgb(101, 103, 107);
 	@include width-height(24px,24px);
 
@@ -1105,7 +1100,8 @@ nav {
     background-color: $background-color_10;
     border: 0;
     outline: 0;
-	@include padding(8px,10px,8px,10px);
+	@include padding(8px,0px,8px,0px);
+	@include width-height(100%,auto);
     display: inline-block;
     color: $color_6;
     border-radius: 3px;
@@ -1123,11 +1119,10 @@ nav {
 
 
 .proflie_detail_right {
-    // text-align: right;
 	display:flex;
 	justify-content: flex-end;
 	align-items: flex-end;
-	@include width-height(auto,100px);
+	@include width-height(60%,100px);
 }
 
 .proflie_detail_right a {
@@ -1153,7 +1148,6 @@ nav {
 }
 .profile_anchor_left ul{
 display: flex;
-// justify-content: space-between;
 }
 .profile_anchor_left ul li{
 	list-style: none;
@@ -1174,14 +1168,12 @@ display: flex;
 .profile_anchor_right svg{
 	@include width-height(16px,16px);
 	color: #050505;
-
 }
 .profile_anchor_right button{
 	background-color: $background-color_10;
     border: 0;
     outline: 0;
-	// @include margin(-25px,0,0,0);
-	@include padding(10px,15px,10px,15px);
+	@include padding(10px,25px,10px,25px);
     display: inline-block;
     color: $color_6;
     border-radius: 3px;
@@ -1306,155 +1298,7 @@ display: flex;
     color:rgb(5, 5, 5) ;
 }
 
-//media Query File
-@media (max-width: 932px) {
-    .cover{
-		@include width-height(100%,100%);
-	}
-	.pd_image{
-		@include width-height(200px,200px);
-		object-fit: cover;
-		display: flex;
-		justify-content: center;
-	}
-	.profile_row{
-		display:  flex;
-		flex-direction: column;
-		align-items: center;
-
-	}
-	.proflie_detail_left{
-		@include width-height(100%,100%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-	}
-    .profile_data{
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-    }
-	.profile_anchor_left{
-		@include width-height(100%,auto);
-		display: flex;
-		justify-content: space-between;
-	}
-	
-	
-	.profile_anchor{
-		@include width-height(98%,auto);
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.anchor1,.anchor2,.anchor3{
-		display: none;
-	}
-	.right_sidebar {
-		display: none;
-	}
-
-	.left_sidebar {
-		display: none;
-	}
-
-	nav {
-		flex-wrap: wrap;
-	}
-	.nav_center{
-		display: none;
-	}
-	
-	.search_box {
-		@include width-height(45px,45px);
-		@include margin(0,0,0,-45px);
-}
-	.logo {
-		width: 110px;
-		@include margin(0,20px,0,0);
-	}
-
-	.nav_left ul li img {
-		@include width-height(20px,auto);
-		@include margin(0,8px,0,8px);
-	}
-
-	.nav_user_icon img {
-		@include width-height(40px,40px);
-	}
-  
-	.nav_user_icon {
-		margin-left: 0;
-	}
-  
-	.add_post_link {
-		flex-wrap: nowrap;
-	}
-  
-	.main_content {
-		flex-basis: 100%;
-		
-	}
-  
-	.story img {
-		width: 30px;
-		border-width: 3px;
-		bottom: 30px;
-	}
-  
-	.story p {
-		font-size: 10px;
-	}
-  
-	.add_post_link a {
-		font-size: 11px;
-		@include margin(0,12px,0,0);
-	}
-  
-	.add_post_link a img {
-		@include width-height(16px,auto);
-		@include margin(0,5px,0,0);
-	}
-
-	.post_input_container {
-		padding-left: 0;
-		@include width-height(100%,auto);
-	}
-	.profile_container {
-		@include padding(20px,5%,20px,5%);
-
-    }
-
-    .profile_detail {
-		@include padding(0,0,0,0);
-        flex-wrap: wrap;
-    }
-
-    .proflie_detail_right {
-        text-align: left;
-		display: flex;
-		justify-content: center;
-		@include width-height(600px,100%);
-		@include padding(0,0,0px,0);
-		
-    }
-
- 
-	
-	
-
-    .profile_info {
-        flex-wrap: wrap;
-    }
-
-    .info_col {
-        flex-basis: 100%;
-    }
-
-    .post_col {
-        flex-basis: 100%;
-    }
-}
 
 
+
+@include responsive-styles;
