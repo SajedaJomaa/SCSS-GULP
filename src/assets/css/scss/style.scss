@@ -1,6 +1,7 @@
 @import './mixins/mixins';
 @import './modules/normalize';
 @import './variables/var';
+@import './responsive/responsive';
 
 .edit{
 	display: flex;
@@ -11,93 +12,157 @@
 	border:none ;
 	background:  $background-color_10;
 	border-radius: 4px;
-    font-size: 15px;
-	font-weight: 600;
-	line-height: 19.9995px;
+	@include font-style(15px,600,19.9995px);
 	color: $color_8;
 }
 
 #demo {
-	background: #fff;
-	width: 450px;
-	padding: 8px;
-	border: 1px solid #ccc;
-	margin: 50px auto;
-	display: none;
+	@include width-height(450px,auto);
+	@include margin(0,auto , 0,auto );
+	@include positioned(relative,0 ,0 ,0 ,0 );
+	color: $color_1;
+	border: 2px dashed $background-color_8;
+	transition: transform 0.3s;
+	display:none;
 }
-
+#status {
+	@include width-height(100%,auto);
+	border: none;
+	box-sizing: border-box
+}
 #review {
-	width: 100%;
+	@include width-height(100%,auto);
 	font-size: 12px;
 	box-sizing: border-box;
-	margin-top: 10px;
-	display: none;
+	@include margin(10px,0,0,0);
 }
 #review a {
 	color: #333;
-	text-decoration: none;
+	text-decoration: none
 }
 #review div {
-	width: 100%;
-	padding: 8px;
+	@include width-height(100%,auto);
+    @include padding(8px,8px,8px,8px);
 	border: 1px solid #ddd;
 	box-sizing: border-box
 }
 #review img {
-	width: 100%
+	width: 50%
 }
 #review h4,
 #review p {
 	margin: 0px;
-	margin-bottom: 10px
 }
 #review span {
 	color: #aaa;
 	text-transform: uppercase
 }
 #review img.loading {
-	width: 50px
+	@include width-height(50px,auto);
 }
+
+.url_preview {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	@include margin(10px,0,10px,0);
+    background-color:$background-color_6;
+}
+
+.url_preview a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.url_preview img {
+	@include width-height(100%,auto);
+    object-fit: cover;
+}
+
+.url_preview div {
+	@include padding(10px,10px,10px,10px);
+}
+
+.url_preview h4 {
+    font-size: 1.2em;
+	@include margin(0,0,0,0);
+    color: #333;
+}
+
+.url_preview p {
+	@include margin(5px,0,5px,0);
+    color: #666;
+}
+
+.url_preview span {
+    font-size: 0.9em;
+    color: $color_1;
+}
+
 .emoji-selector {
-	background-color: $background-color_2;
-	border-radius: 1rem;
-	cursor: default;
-	display: none;
-	@include padding(0, 0, 0,0 );
-	border: 1px solid #eee;
-	@include positioned(absolute,75% ,0 ,0 ,50% );
-	@include width-height(325px,350px);
-	z-index: 5;
-	overflow: auto;
-	transition: padding-left 0.3s, background-color 0.5s; 
+    background-color: $background-color_2;
+    border-radius: 1rem;
+    cursor: default;
+    display: none;
+    @include padding(0, 0, 0, 0);
+    border: 1px solid #eee;
+    @include positioned(absolute, 135%, 0, 0, 50%);
+    @include width-height(325px, 350px);
+    z-index: 5;
+    overflow: auto;
+    transition: padding-left 0.3s, background-color 0.5s; 
 }
+
 .emoji-selector ul.emoji-list {
-	background-color: $background-color_2;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-	@include padding(0, 1rem, 1rem,1rem);
-	border-radius: 0;
-	z-index: 5;
+    background-color: $background-color_2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include padding(0, 1rem, 1rem, 1rem);
+    border-radius: 0;
+    z-index: 5;
 }
+
 .emoji-selector ul.emoji-list li {
-	@include width-height(35px,35px);
-	border-radius: 0.25rem;
-	font-size: 1.5rem;
+    @include width-height(35px, 35px);
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+    margin: 0.2rem; /* Added margin for better spacing */
 }
+
 .emoji-selector.active {
-	bottom: 110%;
-	opacity: 1;
-	pointer-events: all;
+    bottom: 110%;
+    opacity: 1;
+    pointer-events: all;
 }
 
-#webCam{
-	display: none;
+#webCam {
+    display: none;
 	@include width-height(250px,100px);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white; 
+    border: 1px solid #ccc; 
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
-
+.close {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px; 
+    color: black; 
+}
 .uploadOuter {
 	text-align: center;
     @include padding(20px,20px ,20px ,20px );
@@ -144,7 +209,7 @@ nav {
 	background-color:$background-color_6;
 	@include padding(2px, 2%, 2px,2% );
 	@include positioned(sticky,0 ,0 ,0 ,0 );
-	z-index: 1;
+	z-index: 5;
 }
 
 .logo {
@@ -186,11 +251,24 @@ nav {
 	
 .nav_right ul li svg {
 	@include margin(10px,10px ,10px ,10px );
+		color: #050505;
+	@include width-height(20px,20px);
+
+}
+
+.nav_center ul li svg {
+		color: rgb(101, 103, 107);
+	@include width-height(24px,24px);
+
+}
+.proflie_detail_right  .plus{
+	@include width-height(16px,16px);
 
 }
 
 .nav_user_icon img {
 	@include width-height(40px,40px);
+	object-fit: cover;
 	border-radius: 50%;
 	cursor: pointer;
 }
@@ -204,10 +282,10 @@ nav {
 	@include width-height(280px,35px);
 	border-radius: 25px;
 	@include flex-center;
-	@include padding(0,15px ,0 ,15px )
+	@include padding(0,15px ,0 ,15px );
 }
 
-.search_box img {
+.search_box svg {
 	@include width-height(18px,auto);
 }
 
@@ -217,6 +295,8 @@ nav {
 	@include padding(10px,10px ,10px ,10px );
 	outline: none;
 	border: none;
+	@include font-style(15px,400,normal);
+
 }
 
 .online_icon {
@@ -257,6 +337,7 @@ nav {
 
 .main_content {
 	flex-basis: 47%;
+	
 }
 
 .important_link a,
@@ -359,7 +440,8 @@ nav {
 }
 
 .online_list .online_icon img {
-	@include width-height(40px,auto);
+	@include width-height(40px,40px);
+	object-fit: cover;
 	border-radius: 50%;
 }
 
@@ -391,6 +473,7 @@ nav {
 .story img {
 	@include positioned(absolute,0 ,0 ,0 ,0 );
 	@include width-height(45px,45px);
+	object-fit: cover;
 	border-radius: 50%;
 	border: 5px solid  $color_3;
 }
@@ -405,7 +488,7 @@ nav {
 //implement 4 story using for loop
 @for $i from 2 through 5 {
     .story#{$i}{
-        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/#{$i}.jpg');
+        background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/#{$i}.jpg');
     }
 }
 
@@ -418,24 +501,75 @@ nav {
 	@include width-height(35px,auto);
 }
 
-.user_profile {
+.user_profile_modal {
 	@include flex-center;
 }
-.user_profile img {
+.user_profile_modal img {
 	@include width-height(45px,45px);
+	object-fit: cover;
 	border-radius: 50%;
 	@include margin(0,10px ,0 ,0 );
 }
-.user_profile p {
+.user_profile img{
+	@include width-height(45px,45px);
+	object-fit: cover;
+	border-radius: 50%;
+	display: flex;
+}
+.user_profile a {
+	font-size: 12px;
+	color: $color_3;
+	text-decoration: none;
+}
+.user_profile_modal p  {
 	@include margin(0,0 ,-5px ,0 );
 	font-weight: 500;
 	color: $color_2;
 }
-.user_profile small {
+.user_profile_modal small  {
 	font-size: 12px;
 }
+.user_profile span {
+	font-size: 13px;
+	color: $color_5;
+}
+
+.postContent{
+	@include padding(10px,0,0,0);
+	@include font-style(15px,400,19.9995px);
+	color:  $color_8;
+}
+.post_profile_data{
+	@include margin(0,0,0,10px);
+}
+.profile_data img:first-child{
+	z-index: 4;
+	position: relative;
+	right: -15px;
+
+}
+.profile_data img:nth-child(2){
+	z-index: 3;
+	position: relative;
+	right: 0px;
+
+
+}
+.profile_data img:nth-child(3){
+	z-index: 2;
+	position: relative;
+	right: 15px;
+
+}
+.profile_data img:nth-child(4){
+	z-index: 1;
+	position: relative;
+	right: 30px;
+
+}
+
 .post_input_container {
-	@include padding(20px,0 , 0,55px );
+	@include padding(20px,0 , 0,20px );
 }
 .post_input_container input {
 	@include width-height(100%,auto);
@@ -443,26 +577,24 @@ nav {
 	border-bottom: 1px solid $background-color_8;
 	background-color: $background-color_4;
 	outline: none;
-	@include margin(0, 0,-330000000px ,0 );
 	resize: none;
 }
 .add_post_link {
 	display: flex;
-	@include margin(-20px,0 ,0 ,0 );
+	justify-content: space-between;
+	@include padding(20px,0,0,0);
+	// @include margin(-20px,0 ,0 ,0 );
 }
+
 .add_post_link a {
 	text-decoration: none;
 	@include flex-center;
 	color: $color_2;
-	@include margin(0,30px ,0 ,0 );
+	// @include margin(0,30px ,0 ,0 );
 	font-size: 13px;
 }
-.add_post_link a img {
-	@include width-height(20px,auto);
-	@include margin(0,10px ,0 ,0 );
-}
+
 .post_container {
-	
 	@include width-height(98%,auto);
 	background-color: $color_4;
 	border-radius: 6px;
@@ -470,32 +602,207 @@ nav {
 	color: $color_2;
 	@include margin(20px,0 ,20px ,10px);
 }
-.grid_image_container{
-	display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.grid_image_container {
+	@include padding(10px,0,10px,0);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
 }
+
+.grid_image_container .post_img {
+
+    @include width-height(200px,200px);
+    object-fit: cover;
+}
+
+.more_images {
+    position: relative;
+}
+
+.more_overlay {
+	@include positioned(absolute,0,0,0,0);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+	@include flex-center;
+    align-items: center;
+    font-size: 24px;
+}
+
+/* Modal styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+	@include width-height(100%,100%);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.image-modal-content {
+    position: relative;
+    margin: auto;
+	@include padding(20px,20px,20px,20px);
+    width: 80%;
+    max-width: 700px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.close {
+	position: absolute;
+	top: 3px;
+	right: 8px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Grid layout for post images */
+.grid_image_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.grid_image_container .post_img {
+	@include width-height(100%,auto);
+    object-fit: cover;
+}
+
+.more_images {
+    position: relative;
+}
+
+.more_overlay {
+	@include positioned(absolute ,0,0,0,0);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+	@include flex-center;
+    align-items: center;
+    font-size: 24px;
+}
+
 .add_post_container {
 	max-width: 100%;
 	background-color: $color_4;
 	border-radius: 6px;
-	@include padding(20px, 20px,20px ,20px );
+	@include padding(10px, 20px,20px ,20px );
 	color: $color_2;
 	@include margin(20px,0 ,20px ,10px );
 	display: none;
 }
-.add_post_scrolling {
-	max-width: 100%;
+#input_value{
+	background: $background-color_1;
+	@include width-height(100%,35px);
+	border-radius: 25px;
+	justify-content: center;
+	@include padding(20px,20px ,20px ,20px );
+	@include font-style(17px,400,22.78px);
+	@include margin(0,0,10px,0);
+
+}
+.footer-links a {
+	display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+	@include font-style(13px,400, 16.0004px);
+    color: rgb(101, 103, 107);
+}
+
+
+
+.post_shape{
+	@include width-height(98%,auto);
 	background-color: $color_4;
 	border-radius: 6px;
 	@include padding(20px, 20px,20px ,20px );
 	color: $color_2;
-	@include margin(20px,0 ,20px ,0 );
+	@include margin(20px,0 ,20px ,10px);
+	display: flex;
+    flex-direction: column;
+}
+.post_shape h1{
+	@include font-style(20px,700,24px);
+	color: rgb(5, 5, 5);
+
+}
+.post_shape_buttons{
+    display: flex;	
+	@include width-height(210px,auto);
+    justify-content: space-between;
+}
+.post_shape button{
+	border: none;
+	@include padding(5px,5px,5px,5px);
+	@include font-style(15px,600,19.9995px);
+	color:rgb(5, 5, 5) ;
+	display: flex;
+    align-items: center;
 }
 
-.user_profile span {
+.post_shape ul{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	@include padding(10px,0,0,0);
+}
+.post_shape a{
+	text-decoration: none;
+	@include font-style(15px,600,19.9995px);
+	color:rgb(101, 103, 107) ;
+	display: flex;
+    align-items: center;
+
+}
+.post_shape_first{
+	display: flex;
+	justify-content: space-between;
+	@include padding(0,0,10px,0);
+}
+
+.add_post_container .userName ,.user_profile_modal .userName {
+	@include font-style(15px,600,19.9995px );
+    @include padding(0,0,2px,0);
+    color:rgb(5, 5, 5);
+}
+.add_post_container .date,.user_profile_modal .date{
+	@include font-style(13px,400,16.0004px);
+	@include padding(2px,0,2px,0);
+
+	color: $color_7;
+}
+
+.add_post_scrolling {
+	@include width-height(98%,auto);
+	background-color: $color_4;
+	border-radius: 6px;
+	@include padding(20px, 20px,20px ,20px );
+	color: $color_2;
+	@include margin(20px,0 ,20px ,10px);
+}
+
+.user_profile_modal span {
 	font-size: 13px;
 	color: $color_5;
+}
+.user_profile{
+	display: flex;
 }
 .post_text {
 	color: $color_5;
@@ -518,6 +825,7 @@ nav {
 .post_row {
 	@include flex-center;
 	@include flex-space-between;
+	@include padding(10px,0,0px,0);
 }
 .post_row .activity_icon div img {
 	@include width-height(18px,auto);
@@ -527,6 +835,7 @@ nav {
 	display: inline-flex;
 	align-items: center;
 	@include margin(0,30px ,0 ,0 );
+	
 }
 .post_profile_icon {
 	@include flex-center;
@@ -564,7 +873,7 @@ nav {
 .setting_menu_height {
 	max-height: 450px;
 }
-.user_profile a {
+.user_profile_modal a {
 	font-size: 12px;
 	color: $color_3;
 	text-decoration: none;
@@ -617,15 +926,58 @@ nav {
 	@include margin(0,0 ,0 ,23px );
 	background-color: $color_6;
 }
+.delete_post{
+	background-color: #1877f2;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	@include padding(10px,30px,10px,30px);
 
+}
 
 
 #button_value {
+	background-color: #1877f2;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	@include width-height(100%,100%);
 	@include padding(10px,30px,10px,30px);
-	@include margin(0,0,-440px,430px);
+	display: none;
 	
 }
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	@include width-height(100%,100%);
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+    max-width: 50%;
+}
+
+.close_button {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close_button:hover,
+.close_button:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
 
 //*************************************************************
 //*****************Profile User********************************
@@ -637,13 +989,13 @@ nav {
 	@include padding(5px,5px,5px,5px);
   }
   
-  .story_profile {
+.story_profile {
 	// flex-basis: 18%;
 	@include width-height(100%, 200px);
 	@include padding(10%, 0, 10%, 15%);
 	@include positioned(relative, 0, 0, 0, 0);
 	@include margin(0,5px,20px,5px);
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/5.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/5.jpg');
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
@@ -661,13 +1013,11 @@ nav {
 	bottom: -17px;
 	text-align:center;
 	color: $color_8;
-	font-size: 13px;
-    font-weight: 600;
-	line-height: 16.0004px;
+	@include font-style(13px,600,16.0004px);
   }
   
   .story_profile2 {
-	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../../assets/images/2.jpg');
+	background-image: linear-gradient($background-color_4, rgba(0, 0, 0, 0.5)), url('../../assets/images/2.jpg');
 }
   
 
@@ -675,15 +1025,18 @@ nav {
 .profile_container {
 	@include padding(0,15%,20px,15%);
     color: $color_2;
+	
 }
 
 .cover {
 	@include width-height(100%,auto);
     border-radius: 6px;
+	
 }
 .img-cover{
 
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0)  80%, #140A00 100%);
+	// background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(0, 0, 0, 0)  80%, #140A00 100%);
+	border-image:  fill 0 linear-gradient(#0001,$color_6);
 	display: flex;
 }
 .img-cover img {
@@ -694,7 +1047,7 @@ nav {
 .img-cover img:hover { opacity: 1 }
 
 .profile_detail {
-	@include padding(0px,20px,20px,20px);
+	@include padding(0,15%,20px,15%);
     border-radius: 4px;
 	@include flex-space-between;
 	@include width-height(100%,auto);
@@ -704,23 +1057,26 @@ nav {
 }
 
 .profile_row {
-    display: flex;
+	display: flex;
+	justify-content: space-between;
     align-items: flex-start;
-	}
+	@include padding(15px,0,0,0);
+	@include width-height(75%,100%);
+}
 
 .pd_image {
 	@include width-height(200px,200px);
-	@include margin(0,20px,0,0);
+	object-fit: cover;
     border-radius: 50%;
 	position: relative;
-	top: -70px;
+	top: -50px;
 
 }
 
 .profile_row div h3 {
     font-size: 32px;
     font-weight: 700;
-	color: rgb(5, 5, 5);
+	color:$color_8;
 }
 
 .profile_row div p {
@@ -729,22 +1085,29 @@ nav {
 
 .profile_row div img {
     border-radius: 50%;
-	@include width-height(25px,25px);
-	@include margin(12px,0,0,0);
+	@include width-height(40px,40px);
+	@include margin(5px,0,0,0);
 }
 
+.proflie_detail_left{
+	display: flex;
+	@include width-height(100%,auto);
+	justify-content: space-around;
+
+}
 
 .proflie_detail_right button {
     background-color: $background-color_10;
     border: 0;
     outline: 0;
-	@include padding(6px,10px,6px,10px);
+	@include padding(8px,0px,8px,0px);
+	@include width-height(100%,auto);
     display: inline-block;
-    align-items: center;
     color: $color_6;
     border-radius: 3px;
 	@include margin(0,0,0,20px);
     cursor: pointer;
+	@include font-style(15px,600,19.9995px);
 }
 
 .proflie_detail_right button:first-child {
@@ -752,18 +1115,14 @@ nav {
     color: $color_4;
 }
 
-.proflie_detail_right img {
-	@include width-height(15px,15px);
-}
+
 
 
 .proflie_detail_right {
-    text-align: right;
-	@include flex-space-between;
-	align-items: center;
-	position: absolute;
-	right: 230px;
-	top: 410px;
+	display:flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	@include width-height(60%,100px);
 }
 
 .proflie_detail_right a {
@@ -771,27 +1130,33 @@ nav {
     border-radius: 3px;
 	@include padding(10px,10px,10px,10px);
     display: inline-flex;
-	@include width-height(30px,30px);
+	@include width-height(40px,35px);
 	@include margin(-2px,0,0,5px);
+
 }
 
-
+.profile_anchor{
+	display: flex;
+    flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
 .profile_anchor_left{
-    @include width-height(500px,auto);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .profile_anchor_left ul{
-	@include flex-space-between;
-	}
+display: flex;
+}
 .profile_anchor_left ul li{
 	list-style: none;
 	display: inline-block;
-	@include padding(10px,0,0,0);
 }
 .profile_anchor_left a {
 	text-decoration: none;
-	font-size:15px ;
-    font-weight: 600;
-    line-height:  19.9995px;
+	@include font-style(15px,600,19.9995px);
+	@include padding(0,5px,0,5px);
     color: $color_7;
 }
 .profile_anchor_right{
@@ -800,12 +1165,15 @@ nav {
 	align-items: flex-start;
 
 }
+.profile_anchor_right svg{
+	@include width-height(16px,16px);
+	color: #050505;
+}
 .profile_anchor_right button{
 	background-color: $background-color_10;
     border: 0;
     outline: 0;
-	@include margin(-25px,0,0,0);
-	@include padding(10px,15px,10px,15px);
+	@include padding(10px,25px,10px,25px);
     display: inline-block;
     color: $color_6;
     border-radius: 3px;
@@ -828,25 +1196,21 @@ nav {
 }
 
 .profile_intro {
-    background-color: #fff;
+    background-color: $background-color_6;
 	@include padding(20px,20px,20px,20px);
 	@include margin(0,0,20px,0);
     border-radius: 4px;
 }
 
 .profile_intro h3 {
-    font-weight: 700;
 	color: $color_8;
-	font-size: 20px;
-	line-height: 24px;
+	@include font-style(20px,700,24px);
 }
 
 .intro_text {
     text-align: center;
 	@include margin(10px,0,10px,0);
-    font-size: 15px;
-	font-weight: 400;
-	line-height: 19.9995px;
+	@include font-style(15px,400,19.9995px);
 	color: $color_8;
 }
 
@@ -865,18 +1229,21 @@ nav {
 .profile_intro ul li {
     list-style-type: none;
     font-size: 15px;
-    @include margin(15px,0,15px,0);
+    @include padding(10px,0,10px,0);
     @include flex-center;
 }
 
 .profile_intro ul li img {
 	@include width-height(26px,auto);
-	@include margin(0,10px,0,0);
 }
 
 .title_box {
     @include flex-center;
     @include flex-space-between;
+
+}
+.title_box h3, .title_box a{
+	@include padding(10px,0,5px,0);
 }
 
 .title_box a {
@@ -889,12 +1256,14 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 10px;
-	@include margin(15px,0,0,0);
 }
 
 .photo_box div img {
-	@include width-height(100%,auto);
+	@include width-height(90%,100px);
+	object-fit: cover;
     cursor: pointer;
+	border-radius: 5%; 
+	
 }
 
 .profile_intro p {
@@ -903,15 +1272,18 @@ nav {
 
 .freinds_box {
     display: grid;
+	@include width-height(100%,auto);
     grid-template-columns: repeat(3, auto);
-    grid-gap: 10px;
-	@include margin(15px,0,0,0);
+	row-gap: 30px;
+	column-gap: 10px;
+
 }
 
 .freinds_box div img {
-	@include width-height(100%,auto);
+	@include width-height(90%,auto);
+	object-fit: cover;
     cursor: pointer;
-	@include padding(0,0,20px,0);
+	border-radius: 5%; 
 }
 
 .freinds_box div {
@@ -920,140 +1292,187 @@ nav {
 
 .freinds_box p {
     position: absolute;
-    bottom: 0;
+    bottom: -15px;
     left: 0;
+	@include font-style(13px,600,16.0004px);
+    color:rgb(5, 5, 5) ;
 }
 
 //media Query File
-@media (max-width: 932px) {
-	.pd_image{
-		@include positioned(relative ,-70px,0,0,100px);
-		}
-    .profile_data{
-		@include positioned(relative ,140px,0,0,-40px);
-		@include margin(0,0,210px,0);
-    }
-	.profile_anchor_left{
-		@include width-height(100px,auto);
-	}
-	.profile_anchor_left a{
-        @include margin(0,0,0,10px);
-	}
-	.profile_anchor_right{
-		@include width-height(10px,auto);
-		@include positioned(absolute,575px,0,0,370px);
-	}
-	.proflie_detail_right{
-		@include width-height(270px,auto);
-		@include positioned(absolute ,80px,0,0,90px);
-	}
-	.anchor1,.anchor2,.anchor3{
-		display: none;
-	}
-	.right_sidebar {
-		display: none;
-	}
+// @media (max-width: 932px) {
+//     .cover{
+// 		@include width-height(100%,100%);
+// 	}
+// 	.pd_image{
+// 		@include width-height(200px,200px);
+// 		object-fit: cover;
+// 		display: flex;
+// 		justify-content: center;
+// 	}
+// 	.profile_row{
+// 		display:  flex;
+// 		flex-direction: column;
+// 		align-items: center;
 
-	.left_sidebar {
-		display: none;
-	}
+// 	}
+// 	.proflie_detail_left{
+// 		@include width-height(100%,100%);
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		flex-direction: column;
+// 	}
+//     .profile_data{
+// 		display: flex;
+// 		flex-direction: column;
+// 		justify-content: flex-start;
+// 		text-align: center;
 
-	nav {
-		flex-wrap: wrap;
-	}
-	.nav_center{
-		display: none;
-	}
-	.search_box {
-		@include width-height(45px,45px);
-		@include margin(0,0,0,-45px);
-}
-	.logo {
-		width: 110px;
-		@include margin(0,20px,0,0);
-	}
-
-	.nav_left ul li img {
-		@include width-height(20px,auto);
-		@include margin(0,8px,0,8px);
-	}
-
-	.nav_user_icon img {
-		@include width-height(30px,auto);
-	}
-  
-	.nav_user_icon {
-		margin-left: 0;
-	}
-  
-	.add_post_link {
-		flex-wrap: wrap;
-	}
-  
-	.main_content {
-		flex-basis: 100%;
+//     }
+// 	.profile_data h3 ,.profile_data p, .profile_data div, .proflie_detail_right{
+// 		@include margin(0,0,15px,0);
+// 	}
+// 	.profile_anchor_left{
+// 		@include width-height(100%,auto);
+// 		display: flex;
+// 		justify-content: space-between;
+// 	}
+// 	.profile_anchor {
+// 		@include width-height(85%,auto);
+// 		display: flex;
+//         justify-content: center;
+// 	    align-items: center;
+// 	}
+// 	.profile_anchor div{
+// 		@include flex-center;
+// 		justify-content: space-between;
 		
-	}
-  
-	.story img {
-		width: 30px;
-		border-width: 3px;
-		bottom: 30px;
-	}
-  
-	.story p {
-		font-size: 10px;
-	}
-  
-	.add_post_link a {
-		font-size: 11px;
-		margin-right: 12px;
-	}
-  
-	.add_post_link a img {
-		width: 16px;
-		@include margin(0,5px,0,0);
-	}
-  
-	.post_input_container {
-		padding-left: 0;
-		width: 70%;
-	}
-	#button_value {
-        @include padding(10px,30px,10px,30px);
-        @include margin(0,0,-440px,250px);
-	  }
-	  .profile_container {
-		@include padding(20px,5%,20px,5%);
+// 	}
+// 	.profile_line{
+// 		@include width-height(85%,auto);
+// 		margin: 0 auto;
+// 	}
 
-    }
+// 	.anchor1,.anchor2,.anchor3{
+// 		display: none;
+// 	}
+// 	.right_sidebar {
+// 		display: none;
+// 	}
 
-    .profile_detail {
-        flex-wrap: wrap;
-    }
+// 	.left_sidebar {
+// 		display: none;
+// 	}
 
-    .proflie_detail_right {
-        text-align: left;
-		@include margin(15px,0,0,0);
-    }
+// 	nav {
+// 		flex-wrap: wrap;
+// 	}
+// 	.nav_center{
+// 		display: none;
+// 	}
+	
+// 	.search_box {
+// 		@include width-height(45px,45px);
+// 		@include margin(0,0,0,-45px);
+// }
+// 	.logo {
+// 		width: 110px;
+// 		@include margin(0,20px,0,0);
+// 	}
 
-    .proflie_detail_right button {
-        margin-left: 0;
-        margin-right: 10px;
+// 	.nav_left ul li img {
+// 		@include width-height(20px,auto);
+// 		@include margin(0,8px,0,8px);
+// 	}
+
+// 	.nav_user_icon img {
+// 		@include width-height(40px,40px);
+// 	}
+  
+// 	.nav_user_icon {
+// 		margin-left: 0;
+// 	}
+  
+// 	.add_post_link {
+// 		flex-wrap: nowrap;
+// 	}
+  
+// 	.main_content {
+// 		flex-basis: 100%;
 		
-    }
+// 	}
+  
+// 	.story img {
+// 		width: 30px;
+// 		border-width: 3px;
+// 		bottom: 30px;
+// 	}
+  
+// 	.story p {
+// 		font-size: 10px;
+// 	}
+  
+// 	.add_post_link a {
+// 		font-size: 11px;
+// 		@include margin(0,12px,0,0);
+// 	}
+  
+// 	.add_post_link a img {
+// 		@include width-height(16px,auto);
+// 		@include margin(0,5px,0,0);
+// 	}
 
-    .profile_info {
-        flex-wrap: wrap;
-    }
+// 	.post_input_container {
+// 		padding-left: 0;
+// 		@include width-height(100%,auto);
+// 	}
+// 	.profile_container {
+// 		@include padding(20px,5%,20px,5%);
 
-    .info_col {
-        flex-basis: 100%;
-    }
+//     }
 
-    .post_col {
-        flex-basis: 100%;
-    }
-}
+//     .profile_detail {
+// 		@include padding(0,0,0,0);
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+//         flex-wrap: wrap;
+//     }
+
+//     .proflie_detail_right {
+//         text-align: left;
+// 		display: flex;
+// 		justify-content: center;
+// 		@include width-height(100%,auto);
+		
+//     }
+// 	.proflie_detail_right button {
+
+// 		@include width-height(100%,100%);
+// 	}
+
+// 	.proflie_detail_right a { 
+		
+// 		@include padding(10px,15px,10px,15px);
+// 	}
 
 
+
+	
+
+
+//     .profile_info {
+//         flex-wrap: wrap;
+//     }
+
+//     .info_col {
+//         flex-basis: 100%;
+//     }
+
+//     .post_col {
+//         flex-basis: 100%;
+//     }
+// }
+
+
+@include responsive-styles;

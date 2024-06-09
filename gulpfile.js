@@ -7,11 +7,31 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify');
 let notify = require("gulp-notify");
-const ghPages = require('gulp-gh-pages');
-const clean = require('gulp-clean');
-const ftp = require('vinyl-ftp');
+// let browserSync = require('browser-sync');
+// const ghPages = require('gulp-gh-pages');
+// const ftp = require('vinyl-ftp');
+// let imagemin = require('gulp-imagemin');
 
 
+
+// function browserSyncServer(cb) {
+//     browserSync.init({
+//         server: {
+//             baseDir: "."
+//         }
+//     });
+//     cb();
+// }
+// function browserSyncReload(cb) {
+//     browserSync.reload();
+//     cb();
+// }
+
+// //default task
+// exports.default = gulp.series(
+//     browserSyncServer,
+//     browserSyncReload,
+// );
 gulp.task('html', function () {
     return gulp.src('./src/*.html')
         .pipe(sourcemaps.init())
@@ -40,7 +60,6 @@ gulp.task('css', function () {
 gulp.task('script', function () {
     return gulp.src('./src/assets/js/*.js')
         .pipe(sourcemaps.init())
-        .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/assets/js'))
@@ -50,19 +69,10 @@ gulp.task('script', function () {
 
 // gulp.task('image', function () {
 //     return gulp.src('./src/assets/images/*.*')
+//         .pipe(imagemin())
 //         .pipe(gulp.dest('./dist/assets/images'));
 // });
 
-// gulp.task('clean', function () {
-//     return gulp.src('dist', { read: false, allowEmpty: true })
-//         .pipe(clean());
-// });
-
-// // Copy necessary files to the 'dist' directory
-// gulp.task('copy', function () {
-//     return gulp.src(['./src/**/*', '!./src/**/*.html'])
-//         .pipe(gulp.dest('dist'));
-// });
 
 // // Deploy 'dist' directory to GitHub Pages
 // gulp.task('deploy', function () {
@@ -72,20 +82,13 @@ gulp.task('script', function () {
 //         }));
 // });
 
-// // Build task
-// gulp.task('build', gulp.series('clean', 'copy'));
-
-// // Default task
-// gulp.task('default', gulp.series('build', 'deploy'));
-
-
 
 
 // gulp.task('deploy', function () {
 //     var conn = ftp.create({
 //         host: 'https://github.com/SajedaJomaa/GulpDeploy.git',//website
 //         user: 'SajedaJomaa',
-//         password: 'mypassEngSajeda#123456789',
+//         password: '',
 //         parallel: 10,
 //     });
 
